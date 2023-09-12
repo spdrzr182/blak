@@ -1,0 +1,307 @@
+/* apply a natural box layout model to all elements */
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+box-sizing: border-box;
+}
+
+::selection {
+  background: #000;
+  color: #aaf;
+}
+.alternate ::selection {
+  background: #c00;
+  color: #000;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: 'Montserrat', sans-serif;
+}
+
+ul, li, h1, h2, h3, h4, h5, h6, p, a, .logo {
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+.logo img {
+  object-fit: cover;
+  max-width: 100px;
+  max-height: 100px;
+  width: auto;
+  height: auto;
+}
+
+.logo a{
+  display: block;
+  height: 100px;
+  width: 100px;
+}
+
+.inner-head {
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  padding: 8px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.inner {
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+  padding: 15%;
+}
+
+header {
+  width: 100%;
+  background: #000;
+  transition: 0.8s all;
+  z-index: 100;
+}
+
+header.alt-header {
+  background: #fff;
+}
+
+.alt-header a {
+  color: #000;
+}
+
+body.header-fixed header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding-top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+li {
+  list-style: none;
+}
+
+nav {
+  overflow: hidden;
+}
+
+nav a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  padding: 25px;
+  transition: 0.3s all;
+  border-radius: 12px;
+}
+
+.alternate {
+  background: #000;
+  color: #fff;
+}
+
+section .inner {
+  padding-top: 200px;
+}
+
+@media screen and (max-width: 1024px) {
+  .logo img {
+  display: none;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .inner-head {
+  justify-content: center;
+  }
+}
+
+
+/*-----------------------Nav transition--------------*/
+
+a:visited {
+  text-decoration: none;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.nav-items a:hover {
+  color: rgb(251, 255, 0);
+}
+
+.nav-items {
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  margin: 0 1.5em 0 5em;
+}
+
+.nav-items li {
+  list-style: none;
+}
+
+.nav-items a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2em;
+  padding: 10px;
+  display: block;
+  white-space: nowrap;
+}
+
+.burger {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .nav-items {
+  width: 100%;
+  margin: 0;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+body {
+  overflow-x: hidden;
+}
+
+.nav-items {
+  position: fixed;
+  right: 0px;
+  height: 90vh;
+  top: 14vh;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in;
+  z-index: 1;
+}
+
+.nav-items li {
+  opacity: 0;
+}
+
+.nav-items li a {
+  color: #fff;
+  font-size: 1.8em;
+}
+
+.burger {
+  display: block;
+  cursor: pointer;
+}
+}
+
+.burger img {
+  height: 100px;
+  width: 100px;
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 90deg;
+  inherits: true;
+}
+
+@property --gradX {
+  syntax: '<percentage>';
+  initial-value: 50%;
+  inherits: true;
+}
+
+@property --gradY {
+  syntax: '<percentage>';
+  initial-value: 0%;
+  inherits: true;
+}
+
+:root {
+	--d: 2500ms;
+	--angle: 90deg;
+	--gradX: 100%;
+	--gradY: 50%;
+	--c1: rgb(231, 250, 61);
+	--c2: rgba(168, 239, 255, 0.1);
+}
+
+.burger {
+	border: 0.20rem solid;
+	border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
+	animation: borderRotate var(--d) linear infinite forwards;
+}
+
+@keyframes borderRotate {
+	100% {
+		--angle: 420deg;
+	}
+}
+
+@keyframes borderRadial {
+	20% {
+		--gradX: 100%;
+		--gradY: 50%;
+	}
+	40% {
+		--gradX: 100%;
+		--gradY: 100%;
+	}
+	60% {
+		--gradX: 50%;
+		--gradY: 100%;
+	}
+	80% {
+		--gradX: 0%;
+		--gradY: 50%;
+	}
+	100% {
+		--gradX: 50%;
+		--gradY: 0%;
+	}
+}
+
+.nav-active {
+  transform: translateX(0%);
+}
+
+@keyframes navLinkFade {
+from {
+  opacity: 0;
+  transform: translateX(50px);
+  }
+  to {
+  opacity: 1;
+  transform: translateX(0);
+  }
+}
+
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+  opacity: 0;
+}
+
+.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/*----------------------Hero Section---------------------*/
+
+.background-container {
+  height: 670px;
+  border: 1px solid red;
+}
