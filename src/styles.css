@@ -1,7 +1,73 @@
-/* apply a natural box layout model to all elements */
+/* Initial setup */
 *, *:before, *:after {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 box-sizing: border-box;
+}
+
+:root {
+  --clr-primary-200: #454546;
+  --clr-primary-400: #666;
+
+  --clr-neutral-100: #8c8c8c;
+
+  --clr-secondary-200: #ffff56;
+  --clr-secondary-400: #ffff00;
+
+  --clr-contrast-100: #fff;
+  --clr-contrast-900: #000;
+}
+
+ul, li, h1, h2, h3, h4, h5, h6, p, a, .logo {
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 1em;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+.text-center {
+  text-align: center;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+} 
+
+header,
+section {
+  padding: 3rem 0;
+}  
+
+.container {
+  margin-inline: auto;
+  width: min(90%, 70.5rem);
+}
+
+.bg-light { 
+  background-color: var(--clr-contrast-100);
+  color: var(--clr-contrast-900);
+}
+.bg-offset { 
+  background-color: var(--clr-secondary-400);
+  color: var(--clr-contrast-900);
+}
+
+.bg-dark { 
+  background-color: var(--clr-contrast-900);
+  color: var(--clr-contrast-100);
 }
 
 ::selection {
@@ -16,18 +82,10 @@ box-sizing: border-box;
 body {
   margin: 0;
   padding: 0;
-  font-size: 16px;
+  font-weight: 400;
+  font-size: 1.3125rem;
   line-height: 1.5;
   font-family: 'Montserrat', sans-serif;
-}
-
-ul, li, h1, h2, h3, h4, h5, h6, p, a, .logo {
-  font-family: 'Montserrat', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
-  margin: 0;
-  padding: 0;
 }
 
 .logo img {
@@ -66,6 +124,7 @@ header {
   background: #000;
   transition: 0.8s all;
   z-index: 100;
+  padding: 0;
 }
 
 header.alt-header {
@@ -135,7 +194,7 @@ a:link {
 }
 
 .nav-items a:hover {
-  color: rgb(251, 255, 0);
+  color: var(--clr-secondary-400);
 }
 
 .nav-items {
@@ -196,7 +255,7 @@ body {
 
 .nav-items li a {
   color: #fff;
-  font-size: 1.8em;
+  font-size: 1.2em;
 }
 
 .burger {
@@ -233,13 +292,13 @@ body {
 	--angle: 90deg;
 	--gradX: 100%;
 	--gradY: 50%;
-	--c1: rgb(231, 250, 61);
+	--c1: ;
 	--c2: rgba(168, 239, 255, 0.1);
 }
 
 .burger {
 	border: 0.20rem solid;
-	border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
+	border-image: conic-gradient(from var(--angle), var(--clr-secondary-200), var(--clr-secondary-400) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
 	animation: borderRotate var(--d) linear infinite forwards;
 }
 
@@ -301,7 +360,58 @@ from {
 
 /*----------------------Hero Section---------------------*/
 
+.hero {
+  padding: 0;
+}
+
 .background-container {
   height: 670px;
-  border: 1px solid red;
+  background: #fff;
+  background-position: center;
+  background-size: cover;
+  background-image:url(../src/images/brush.jpg);
 }
+
+.hero-container {
+  display: flex;
+  height: 100%;
+}
+
+.column-left {
+  flex-basis: 100%;
+  padding: 1.2em;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.column-left h1 {
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.column-left p {
+  font-size: 1.2em;
+}
+
+.column-left button {
+  padding: 1rem 3rem;
+  font-size: 1rem;
+  margin: 1rem;
+  border: none;
+  color: #fff;
+  background: #000;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+button:hover {
+  background: #fff;
+  color: #000;
+}
+
+.column-right {
+  flex-basis: 60%;
+}
+
+
+
