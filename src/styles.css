@@ -96,7 +96,7 @@ body {
   height: auto;
 }
 
-.logo a{
+.logo a {
   display: block;
   height: 100px;
   width: 100px;
@@ -365,7 +365,7 @@ from {
 }
 
 .background-container {
-  height: 670px;
+  height: 640px;
   background: #fff;
   background-position: center;
   background-size: cover;
@@ -412,6 +412,44 @@ button:hover {
 .column-right {
   flex-basis: 60%;
 }
+
+/*------------------alt-section-----------------*/
+
+.alt-container{
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.alt-right {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.alt-right h2 {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.alt-right p {
+  flex-grow: 1;
+}
+
+.alt-left {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.alt-left img {
+  object-fit: cover;
+  width: auto;
+  height: auto;
+}
+
+
 
 
 
