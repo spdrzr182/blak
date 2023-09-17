@@ -481,6 +481,31 @@ button:hover {
   }
 }
 
+/*----------------Features----------------*/
+
+.features {
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.features-container {
+  display: flex;
+  flex-direction: row;
+  height: 90%;
+  gap: 1em;
+  justify-content: space-between;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+  height: 100%;
+  flex-grow: 1;
+}
+
 /*-------------- Photo Gallery ----------*/
 
 #demosection3 {
